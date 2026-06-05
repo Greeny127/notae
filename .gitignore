@@ -1,0 +1,8 @@
+# Ignore everything in this directory by default
+/*
+
+!/History/
+
+# Un-ignore essential repository files so they can be tracked
+!.gitignore
+!README.md
