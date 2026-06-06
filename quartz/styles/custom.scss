@@ -5,3 +5,67 @@
 .page-title a {
   font-size: 3.5rem; 
 }
+
+/* --- Ultra-Minimal Abstract ToC --- */
+
+/* 1. Hide the "Table of Contents" header initially */
+.toc > h3 {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* 2. Make the text transparent by default to hide it */
+.toc li a {
+  color: transparent !important;
+  position: relative;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+/* 3. Draw the abstract horizontal lines */
+.toc li a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 2px;
+  width: 25px; /* Base length of the lines */
+  background-color: var(--gray);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  opacity: 0.6;
+}
+
+/* Create visual hierarchy by making nested headers smaller/indented */
+.toc li.depth-1 a::before { width: 15px; margin-left: 10px; }
+.toc li.depth-2 a::before { width: 10px; margin-left: 20px; }
+
+/* Expand and color the line for the section currently being read */
+.toc li a.in-view::before {
+  background-color: var(--secondary);
+  width: 40px; 
+  opacity: 1;
+}
+
+/* --- 4. The Hover Reveal Effect --- */
+
+/* When your mouse enters the ToC container... */
+.toc:hover > h3 {
+  opacity: 1; /* Fade in the header */
+}
+
+.toc:hover li a {
+  color: var(--gray) !important; /* Fade in the text */
+}
+
+.toc:hover li a.in-view {
+  color: var(--secondary) !important; /* Keep the active section highlighted */
+  font-weight: 600;
+}
+
+/* Slide out and fade out the abstract lines so the text can be read */
+.toc:hover li a::before {
+  opacity: 0;
+  transform: translateX(-10px) translateY(-50%); 
+}
