@@ -6,9 +6,9 @@
   font-size: 3.5rem; 
 }
 
-/* --- Ultra-Minimal Abstract ToC (Updated) --- */
+/* --- Ultra-Minimal Abstract ToC (Thick & Tight) --- */
 
-/* 1. Make the header subtle but always visible */
+/* 1. Header styling */
 .toc > h3 {
   font-size: 0.85rem;
   text-transform: uppercase;
@@ -17,52 +17,51 @@
   opacity: 0.5;
 }
 
-/* 2. Tighten vertical spacing of the lines */
+/* 2. Remove all default Quartz spacing to push lines together */
 .toc ul {
   list-style: none;
-  padding-left: 0;
+  padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 6px; /* Adjust this number to push lines closer or further apart */
+  gap: 2px; /* Very tiny gap between the thick lines */
 }
 
 .toc li {
-  margin: 0;
-  padding: 0;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
-/* 3. Make text transparent by default */
+/* 3. Lock the height of the links so they are forced close together */
 .toc li a {
   color: transparent !important;
   position: relative;
-  display: inline-block;
-  padding: 2px 0; /* Keeps the hover target area small */
+  display: flex;
+  align-items: center;
+  height: 14px; /* FIXED HEIGHT: Dictates exactly how close the lines are */
   transition: color 0.2s ease;
   font-size: 0.85rem;
-  line-height: 1;
+  white-space: nowrap; /* Prevents long text from breaking the tight spacing */
 }
 
-/* 4. Draw the abstract lines */
+/* 4. Draw the THICKER lines */
 .toc li a::before {
   content: "";
   position: absolute;
   left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 2px;
-  width: 25px; /* Base line width */
+  height: 4px; /* THICKER (was 2px) */
+  width: 25px; 
   background-color: var(--gray);
-  border-radius: 2px;
+  border-radius: 4px;
   transition: all 0.2s ease;
   opacity: 0.6;
 }
 
-/* Make nested headers slightly shorter and indented */
+/* Adjust lengths for sub-headers */
 .toc li.depth-1 a::before { width: 15px; left: 10px; }
 .toc li.depth-2 a::before { width: 10px; left: 20px; }
 
-/* The line for the section you are currently reading */
+/* The active section line */
 .toc li a.in-view::before {
   background-color: var(--secondary);
   width: 35px;
@@ -84,5 +83,5 @@
 /* Hide the abstract line of the hovered item so text is readable */
 .toc li a:hover::before {
   opacity: 0;
-  transform: translateX(-10px) translateY(-50%);
+  transform: translateX(-10px);
 }

@@ -188,7 +188,7 @@ plugins:
   - source: github:quartz-community/tag-list
     enabled: false
     layout:
-      position: right
+      position: beforeBody
       priority: 30
   - source: github:quartz-community/page-title
     enabled: true
@@ -225,8 +225,7 @@ plugins:
     enabled: true
     options:
       links:
-        GitHub: https://github.com/jackyzha0/quartz
-        Discord Community: https://discord.gg/cRFFHYye7t
+        GitHub: https://github.com/greeny127/notae
   - source: github:quartz-community/recent-notes
     enabled: false
   - source: github:quartz-community/spacer
@@ -242,7 +241,7 @@ plugins:
     options: {}
     order: 50
   - source: github:quartz-community/note-properties
-    enabled: false
+    enabled: true
     options:
       includeAll: false
       includedProperties:
