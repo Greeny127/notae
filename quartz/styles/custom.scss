@@ -85,3 +85,15 @@
   opacity: 0;
   transform: translateX(-10px);
 }
+
+/* Prevent horizontal scrollbars in the TOC container */
+.toc {
+  overflow-x: hidden;
+}
+
+/* Ensure long text gets an ellipsis (...) instead of pushing past the edge */
+.toc li a {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
