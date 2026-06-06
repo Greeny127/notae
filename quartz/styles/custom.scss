@@ -6,7 +6,25 @@
   font-size: 3.5rem; 
 }
 
-/* --- Ultra-Minimal Abstract ToC (Thick & Tight) --- */
+/* --- Ultra-Minimal Abstract ToC --- */
+
+/* Hide vertical and horizontal scrollbars but allow scrolling */
+.toc {
+  overflow-x: hidden;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+.toc::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
+}
+
+/* Hide the collapse arrow */
+.toc svg.fold {
+  display: none !important;
+}
+.toc .folder-button {
+  cursor: default;
+}
 
 /* 1. Header styling */
 .toc > h3 {
@@ -17,14 +35,14 @@
   opacity: 0.5;
 }
 
-/* 2. Remove all default Quartz spacing to push lines together */
+/* 2. Tighten vertical spacing drastically */
 .toc ul {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 2px; /* Very tiny gap between the thick lines */
+  gap: 1px; /* TIGHTER GAP */
 }
 
 .toc li {
@@ -32,13 +50,13 @@
   padding: 0 !important;
 }
 
-/* 3. Lock the height of the links so they are forced close together */
+/* 3. Lock the height tightly around the thick lines */
 .toc li a {
   color: transparent !important;
   position: relative;
   display: flex;
   align-items: center;
-  height: 18px; /* INCREASED from 14px to give the thicker lines room */
+  height: 10px; /* TIGHTER HEIGHT */
   transition: color 0.2s ease;
   font-size: 0.85rem;
   white-space: nowrap; 
@@ -47,12 +65,12 @@
   max-width: 100%;
 }
 
-/* 4. Draw the THICKER lines */
+/* 4. Draw the THICKEST lines */
 .toc li a::before {
   content: "";
   position: absolute;
   left: 0;
-  height: 6px; /* INCREASED THICKNESS (You can bump this to 8px for even chunkier lines) */
+  height: 8px; /* THICKER LINES */
   width: 25px; 
   background-color: var(--gray);
   border-radius: 4px;
@@ -87,26 +105,4 @@
 .toc li a:hover::before {
   opacity: 0;
   transform: translateX(-10px);
-}
-
-/* Prevent horizontal scrollbars in the TOC container */
-.toc {
-  overflow-x: hidden;
-}
-
-/* Ensure long text gets an ellipsis (...) instead of pushing past the edge */
-.toc li a {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 100%;
-}
-
-/* Hide the collapse arrow in the Table of Contents */
-.toc svg.fold {
-  display: none !important;
-}
-
-/* Make the header act like normal text instead of a clickable button */
-.toc .folder-button {
-  cursor: default;
 }
