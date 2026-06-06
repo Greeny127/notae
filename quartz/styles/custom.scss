@@ -6,23 +6,44 @@
   font-size: 3.5rem; 
 }
 
-/* --- Ultra-Minimal Abstract ToC --- */
+/* --- Ultra-Minimal Abstract ToC (Updated) --- */
 
-/* 1. Hide the "Table of Contents" header initially */
+/* 1. Make the header subtle but always visible */
 .toc > h3 {
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 0.5rem;
+  opacity: 0.5;
 }
 
-/* 2. Make the text transparent by default to hide it */
+/* 2. Tighten vertical spacing of the lines */
+.toc ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px; /* Adjust this number to push lines closer or further apart */
+}
+
+.toc li {
+  margin: 0;
+  padding: 0;
+}
+
+/* 3. Make text transparent by default */
 .toc li a {
   color: transparent !important;
   position: relative;
   display: inline-block;
-  transition: color 0.3s ease;
+  padding: 2px 0; /* Keeps the hover target area small */
+  transition: color 0.2s ease;
+  font-size: 0.85rem;
+  line-height: 1;
 }
 
-/* 3. Draw the abstract horizontal lines */
+/* 4. Draw the abstract lines */
 .toc li a::before {
   content: "";
   position: absolute;
@@ -30,42 +51,38 @@
   top: 50%;
   transform: translateY(-50%);
   height: 2px;
-  width: 25px; /* Base length of the lines */
+  width: 25px; /* Base line width */
   background-color: var(--gray);
   border-radius: 2px;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   opacity: 0.6;
 }
 
-/* Create visual hierarchy by making nested headers smaller/indented */
-.toc li.depth-1 a::before { width: 15px; margin-left: 10px; }
-.toc li.depth-2 a::before { width: 10px; margin-left: 20px; }
+/* Make nested headers slightly shorter and indented */
+.toc li.depth-1 a::before { width: 15px; left: 10px; }
+.toc li.depth-2 a::before { width: 10px; left: 20px; }
 
-/* Expand and color the line for the section currently being read */
+/* The line for the section you are currently reading */
 .toc li a.in-view::before {
   background-color: var(--secondary);
-  width: 40px; 
+  width: 35px;
   opacity: 1;
 }
 
-/* --- 4. The Hover Reveal Effect --- */
+/* --- 5. Individual Line Hover Reveal --- */
 
-/* When your mouse enters the ToC container... */
-.toc:hover > h3 {
-  opacity: 1; /* Fade in the header */
+/* ONLY reveal the text of the exact line being hovered */
+.toc li a:hover {
+  color: var(--darkgray) !important;
 }
 
-.toc:hover li a {
-  color: var(--gray) !important; /* Fade in the text */
-}
-
-.toc:hover li a.in-view {
-  color: var(--secondary) !important; /* Keep the active section highlighted */
+.toc li a.in-view:hover {
+  color: var(--secondary) !important;
   font-weight: 600;
 }
 
-/* Slide out and fade out the abstract lines so the text can be read */
-.toc:hover li a::before {
+/* Hide the abstract line of the hovered item so text is readable */
+.toc li a:hover::before {
   opacity: 0;
-  transform: translateX(-10px) translateY(-50%); 
+  transform: translateX(-10px) translateY(-50%);
 }

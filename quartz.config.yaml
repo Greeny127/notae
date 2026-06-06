@@ -181,12 +181,12 @@ plugins:
       position: beforeBody
       priority: 10
   - source: github:quartz-community/content-meta
-    enabled: false
+    enabled: true
     layout:
       position: beforeBody
       priority: 20
   - source: github:quartz-community/tag-list
-    enabled: true
+    enabled: false
     layout:
       position: right
       priority: 30
