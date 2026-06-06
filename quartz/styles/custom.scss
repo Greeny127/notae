@@ -97,3 +97,13 @@
   text-overflow: ellipsis;
   max-width: 100%;
 }
+
+/* Hide the collapse arrow in the Table of Contents */
+.toc svg.fold {
+  display: none !important;
+}
+
+/* Make the header act like normal text instead of a clickable button */
+.toc .folder-button {
+  cursor: default;
+}
