@@ -38,10 +38,13 @@
   position: relative;
   display: flex;
   align-items: center;
-  height: 14px; /* FIXED HEIGHT: Dictates exactly how close the lines are */
+  height: 18px; /* INCREASED from 14px to give the thicker lines room */
   transition: color 0.2s ease;
   font-size: 0.85rem;
-  white-space: nowrap; /* Prevents long text from breaking the tight spacing */
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 /* 4. Draw the THICKER lines */
@@ -49,7 +52,7 @@
   content: "";
   position: absolute;
   left: 0;
-  height: 4px; /* THICKER (was 2px) */
+  height: 6px; /* INCREASED THICKNESS (You can bump this to 8px for even chunkier lines) */
   width: 25px; 
   background-color: var(--gray);
   border-radius: 4px;
