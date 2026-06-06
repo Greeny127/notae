@@ -1,24 +1,25 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
-  pageTitle: Quartz 5
+  pageTitle: Notae
   pageTitleSuffix: ""
   enableSPA: true
   enablePopovers: true
   analytics:
-    provider: plausible
+    provider: null
   locale: en-US
   baseUrl: greeny127.github.io/notae
   ignorePatterns:
     - private
+    - journal
     - templates
     - .obsidian
   theme:
     fontOrigin: googleFonts
     cdnCaching: true
     typography:
-      header: Schibsted Grotesk
-      body: Source Sans Pro
-      code: IBM Plex Mono
+      header: Arvo
+      body: Lexend Deca
+      code: Cascadia Mono
     colors:
       lightMode:
         light: "#faf8f8"
