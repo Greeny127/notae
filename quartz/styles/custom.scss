@@ -7,15 +7,14 @@
 }
 
 /* --- Ultra-Minimal Abstract ToC --- */
+/* --- Ultra-Minimal Abstract ToC --- */
 
-/* Hide vertical and horizontal scrollbars but allow scrolling */
-.toc {
-  overflow-x: hidden;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
-}
-.toc::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, and Opera */
+/* Allow the ToC to expand infinitely vertically without scrolling */
+.toc, 
+.toc .toc-content {
+  max-height: none !important;
+  overflow-y: visible !important;
+  overflow-x: hidden; /* Keeps long text from pushing horizontally */
 }
 
 /* Hide the collapse arrow */
@@ -25,7 +24,6 @@
 .toc .folder-button {
   cursor: default;
 }
-
 /* 1. Header styling */
 .toc > h3 {
   font-size: 0.85rem;
@@ -42,7 +40,7 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 1px; /* TIGHTER GAP */
+  gap: 3px; /* TIGHTER GAP */
 }
 
 .toc li {
