@@ -21,7 +21,7 @@ configuration:
       header: Arvo
       body: Lexend Deca
       code: Cascadia Mono
-  colors:
+    colors:
       lightMode:
         light: "#fbf1c7"
         lightgray: "#ebdbb2"
